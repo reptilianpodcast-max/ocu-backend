@@ -8,7 +8,7 @@
     "node": "22.x"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Tres Bros",
   "license": "ISC",
