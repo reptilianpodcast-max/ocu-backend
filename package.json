@@ -4,8 +4,11 @@
   "description": "backend of the ocean university engineering club website",
   "main": "server.js",
   "type": "module",
+  "engines": [
+    "node": "22.x"
+  ],
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Tres Bros",
   "license": "ISC",
