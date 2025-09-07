@@ -2,13 +2,10 @@
   "name": "engineering-club-site-backend",
   "version": "1.0.0",
   "description": "backend of the ocean university engineering club website",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
-  "engines": {
-    "node": "22.x"
-  },
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "author": "Tres Bros",
   "license": "ISC",
