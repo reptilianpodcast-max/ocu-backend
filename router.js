@@ -1,15 +1,26 @@
 const express = require('express');
 const controller = require('./controller');
+const multer = require('multer');
 const router = express.Router();
 
+// Multer to store file in memory
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage,
+  limits: {
+    fieldSize: 10 * 1024 * 1024, // 10MB text fields
+    fileSize: 5 * 1024 * 1024, // 5MB file size
+  },
+});
+
 router.get('/articles',controller.getArticles);
-router.post('/addarticles',controller.addArticles);
-router.patch('/updatearticles/:id',controller.updateArticles);
+router.post('/addarticles',upload.single("file"),controller.addArticles);
+router.patch('/updatearticles/:id',upload.single("file"),controller.updateArticles);
 router.delete('/deletearticles/:id',controller.deleteArticles);
 
 router.get('/news',controller.getNews);
-router.post('/addnews',controller.addNews);
-router.patch('/updatenews/:id',controller.updateNews);
+router.post('/addnews',upload.single("file"),controller.addNews);
+router.patch('/updatenews/:id',upload.single("file"),controller.updateNews);
 router.delete('/deletenews/:id',controller.deleteNews);
 
 router.get('/comments',controller.getComments);
