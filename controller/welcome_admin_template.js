@@ -2,7 +2,7 @@
 module.exports = function resetPasswordTemplate({
   userName,
   password,
-  loginLink = "http://localhost:3000/admin", // Replace this with actual link
+  loginLink = "https://ocuengineeringclub.netlify.app/admin", // Replace this with actual link
   clubName = "Ocean University Engineering Club",
   logoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuocjgIXjtX2iRgh3emheXTnKaEd8fvkx2-g&s",
 }) {
@@ -89,3 +89,4 @@ module.exports = function resetPasswordTemplate({
     </html>
     `;
 };
+
