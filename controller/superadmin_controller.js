@@ -73,7 +73,7 @@ const forgotPassword = async (req, res, next) => {
       "Reset Super Admin Password",
       reset_password_template({
         userName: superAdminExist.name,
-        resetLink: "http://localhost:3000/superadmin",
+        resetLink: "https://ocuengineeringclub.netlify.app/superadmin",
       }),
     );
     res.status(200).json({ message: "Reset link sent to your email." });
@@ -85,4 +85,5 @@ const forgotPassword = async (req, res, next) => {
 
 exports.getSuperAdmin = getSuperAdmin;
 exports.updateSuperAdmin = updateSuperAdmin;
+
 exports.forgotPassword = forgotPassword;
