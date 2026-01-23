@@ -1,5 +1,7 @@
 const SuperAdmin = require('../model/superadmin_model');
+const { sendMail } = require('./mail');
 const hash = require('./passwordHashing');
+const reset_password_template = require('./reset_password_template');
 
 // Superadmin Controller
 const getSuperAdmin = async (req, res, next) => {
@@ -62,7 +64,7 @@ const updateSuperAdmin = async (req, res, next) => {
 const forgotPassword = async (req, res, next) => {
   try {
     const { email } = req.body;
-    const superAdminExist = await Admin.findOne({ email: email });
+    const superAdminExist = await SuperAdmin.findOne({ email: email });
     if (!superAdminExist) {
       return res.status(404).json({ message: "Email not found." });
     }
@@ -73,7 +75,7 @@ const forgotPassword = async (req, res, next) => {
       "Reset Super Admin Password",
       reset_password_template({
         userName: superAdminExist.name,
-        resetLink: "https://ocuengineeringclub.netlify.app/superadmin",
+        resetLink: "http://localhost:3000/superadmin",
       }),
     );
     res.status(200).json({ message: "Reset link sent to your email." });
@@ -85,5 +87,4 @@ const forgotPassword = async (req, res, next) => {
 
 exports.getSuperAdmin = getSuperAdmin;
 exports.updateSuperAdmin = updateSuperAdmin;
-
 exports.forgotPassword = forgotPassword;
