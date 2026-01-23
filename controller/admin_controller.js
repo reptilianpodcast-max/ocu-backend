@@ -132,7 +132,7 @@ const forgotPassword = async (req, res, next) => {
       "Reset Admin Password",
       reset_password_template({
         userName: adminExist.name,
-        resetLink: "http://localhost:3000/admin",
+        resetLink: "https://ocuengineeringclub.netlify.app/admin",
       }),
     );
     res.status(200).json({ message: "Reset link sent to your email." });
@@ -146,4 +146,5 @@ exports.getAdmin = getAdmin;
 exports.addAdmin = addAdmin;
 exports.updateAdmin = updateAdmin;
 exports.deleteAdmin = deleteAdmin;
+
 exports.forgotPassword = forgotPassword;
