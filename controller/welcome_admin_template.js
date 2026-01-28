@@ -1,10 +1,11 @@
-// emailTemplates/resetPassword.js
+require('dotenv').config();
+
 module.exports = function resetPasswordTemplate({
   userName,
   password,
-  loginLink = "https://ocuengineeringclub.netlify.app/admin", // Replace this with actual link
-  clubName = "Ocean University Engineering Club",
-  logoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuocjgIXjtX2iRgh3emheXTnKaEd8fvkx2-g&s",
+  loginLink = process.env.CLUB_FRONTEND_URL,
+  clubName = process.env.CLUB_NAME,
+  logoUrl = process.env.CLUB_LOGO_URL,
 }) {
     return `
     <!DOCTYPE html>
@@ -47,7 +48,7 @@ module.exports = function resetPasswordTemplate({
 
                 <p>Please use the temporary password below to log in:</p>
 
-                <p style="background:#f4f6f8; padding:12px; font-size:16px; font-weight:bold; letter-spacing:1px;">
+                <p style="background:#f4f6f8; padding:12px; font-size:16px; font-weight:bold; letter-spacing:1px; text-align: center;">
                     ${password}
                 </p>
 
@@ -89,4 +90,3 @@ module.exports = function resetPasswordTemplate({
     </html>
     `;
 };
-

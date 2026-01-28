@@ -1,9 +1,10 @@
-// emailTemplates/resetPassword.js
+require('dotenv').config();
+
 module.exports = function resetPasswordTemplate({
   userName,
-  resetLink,
-  clubName = "Ocean University Engineering Club",
-  logoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuocjgIXjtX2iRgh3emheXTnKaEd8fvkx2-g&s",
+  otp,
+  clubName = process.env.CLUB_NAME,
+  logoUrl = process.env.CLUB_LOGO_URL,
 }) {
     return `
     <!DOCTYPE html>
@@ -42,13 +43,10 @@ module.exports = function resetPasswordTemplate({
                 <td style="padding:30px; color:#333333;">
                 <h2 style="margin-top:0;">Hi ${userName} 👋</h2>
 
-                <p>Click the button below to reset your password:</p>
+                <p>Use the otp below to reset your password:</p>
 
-                <p style="text-align:center; margin:30px 0;">
-                    <a href="${resetLink}"
-                    style="background:#000000; color:#ffffff; padding:12px 24px; text-decoration:none; border-radius:4px;">
-                    Reset Password
-                    </a>
+                <p style="background:#f4f6f8; padding:12px; font-size:28px; font-weight:bold; letter-spacing:1px; text-align: center;">
+                    ${otp}
                 </p>
                 <p>If you didn’t request this, please ignore this email.</p>
                 <p>Best regards,<br>

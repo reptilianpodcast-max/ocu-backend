@@ -5,6 +5,7 @@ require('dotenv').config();
 const app_host = process.env.EMAIL_APP_HOST;
 const app_email = process.env.EMAIL_APP_EMAIL;
 const app_password = process.env.EMAIL_APP_PASSWORD;
+const club_name = process.env.CLUB_NAME;
 
 // Create a transporter using Gmail.
 // For production, replace with your actual SMTP server details.
@@ -22,7 +23,7 @@ const transporter = nodemailer.createTransport({
 const sendMail = async (to, subject, message) => {
     try {
         await transporter.sendMail({
-            from: '"Ocean University Engineering Club" <reptilianpodcast@gmail.com>',
+            from: `"${club_name}" <${app_email}>`,
             to: to,
             subject: subject,
             html: message, // HTML version of the message
